@@ -46,14 +46,16 @@ class PostController extends Controller
             'title' => 'required|string|min:5|max:50|unique:posts',
             'content' => 'required|string',
             'image' => 'nullable|image',
-            'is_published' => 'nullable|boolean'
+            'is_published' => 'nullable|boolean',
+            'category_id' => 'nullable|exists:categories,id'
         ], [
             'title.required' => 'Il titolo è obbligatorio',
             'title.min' => 'Il titolo deve essere almeno di :min caratteri',
             'title.max' => 'Il titolo deve essere massimo di :max caratteri',
             'title.unique' => 'Titolo già esistente',
             'image.url' => 'L\'indirizzo non è valido',
-            'content.required' => 'Il contenuto è obbligatorio'
+            'content.required' => 'Il contenuto è obbligatorio',
+            'category_id.exists' => 'Categoria non valida'
         ]);
 
         $data = $request->all();
@@ -85,7 +87,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin\posts\edit', compact('post'));
+        $categories = Category::all();
+        return view('admin\posts\edit', compact('post', 'categories'));
     }
 
     /**
@@ -97,14 +100,16 @@ class PostController extends Controller
             'title' => ['required', 'string', 'min:5', 'max:50'],
             'content' => 'required|string',
             'image' => 'nullable|image',
-            'is_published' => 'nullable|boolean'
+            'is_published' => 'nullable|boolean',
+            'category_id' => 'nullable|exists:categories,id'
         ], [
             'title.required' => 'Il titolo è obbligatorio',
             'title.min' => 'Il titolo deve essere almeno di :min caratteri',
             'title.max' => 'Il titolo deve essere massimo di :max caratteri',
             'title.unique' => 'Titolo già esistente',
             'image.url' => 'L\'indirizzo non è valido',
-            'content.required' => 'Il contenuto è obbligatorio'
+            'content.required' => 'Il contenuto è obbligatorio',
+            'category_id.exists' => 'Categoria non valida'
         ]);
 
         $data = $request->all();

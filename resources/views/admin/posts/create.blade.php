@@ -28,7 +28,7 @@
                 <select name="category_id" id="category_id" class="form-select">
                     <option value="">Nessuna</option>
                     @foreach($categories as $category)
-                    <option value="1">{{$category->label}}</option>
+                    <option value="{{$category->id}}">{{$category->label}}</option>
                     @endforeach
                 </select>
             </div>
