@@ -19,8 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'lena@email.it',
         ]);
 
-        \App\Models\Post::factory(30)->create();
-
         $this->call(CategorySeeder::class);
+        \App\Models\Post::factory(30)->create();
     }
 }

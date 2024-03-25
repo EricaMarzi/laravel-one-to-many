@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -27,9 +29,13 @@ class PostFactory extends Factory
 
         Storage::makeDirectory('post_image');
 
+        $category_ids = Category::pluck('id')->toArray();
+        $category_ids[] = null;
+
         return [
             'title' => $title,
             'slug' => $slug,
+            'category_id' => Arr::random($category_ids),
             'content' => fake()->paragraph(40, true),
             'image' => $img_url,
             'is_published' => fake()->boolean()
