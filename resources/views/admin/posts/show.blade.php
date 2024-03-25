@@ -6,6 +6,14 @@
 
 <header>
     <h1>{{$post->title}}</h1>
+    <div>Categoria:
+        @if($post->category)
+        <span class="badge rounded-pill" style="background-color: {{$post->category->color}}">{{$post->category->label}}</span>
+        @else
+        No Category
+        @endif
+    </div>
+    <hr>
 </header>
 
 

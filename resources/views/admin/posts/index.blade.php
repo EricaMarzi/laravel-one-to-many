@@ -42,7 +42,12 @@
             <th scope="row">{{$post->id}}</th>
             <td>{{$post->title}}</td>
             <td>{{$post->slug}}</td>
-            <td>{{$post->category ? $post->category->label : '-'}}</td>
+            <td>@if($post->category)
+                <span class="badge rounded-pill" style="background-color: {{$post->category->color}}">{{$post->category->label}}</span>
+                @else
+                No Category
+                @endif
+            </td>
             <td>{{$post->is_published ? 'Pubblicato' : 'Bozza'}}</td>
             <td>{{$post->created_at}}</td>
             <td>{{$post->updated_at}}</td>

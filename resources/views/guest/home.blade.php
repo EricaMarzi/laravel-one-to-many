@@ -9,8 +9,16 @@
 @forelse($posts as $post)
 <div class="card my-5">
     <div class="card-header">
-        {{$post->title}}
+        <h1>{{$post->title}}</h1>
+        <div>Categoria:
+            @if($post->category)
+            <span class="badge rounded-pill" style="background-color: {{$post->category->color}}">{{$post->category->label}}</span>
+            @else
+            No Category
+            @endif
+        </div>
     </div>
+
     <div class="card-body">
         <div class="row">
             @if($post->image)
