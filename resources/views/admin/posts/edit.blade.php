@@ -30,7 +30,7 @@
                 <select name="category_id" id="category_id" class="form-select">
                     <option value="">Nessuna</option>
                     @foreach($categories as $category)
-                    <option value="{{$category->id}}" @if(old('category_id', '$post->category?->id' )==$category->id) selected @endif>{{$category->label}}</option>
+                    <option value="{{$category->id}}" @if(old('category_id', $post->category?->id )==$category->id) selected @endif>{{$category->label}}</option>
                     @endforeach
                 </select>
             </div>
