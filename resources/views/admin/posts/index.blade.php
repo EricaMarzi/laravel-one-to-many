@@ -25,6 +25,7 @@
             <th scope="col">#</th>
             <th scope="col">Titolo</th>
             <th scope="col">Slug</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Stato</th>
             <th scope="col">Data creazione</th>
             <th scope="col">Ultima modifica</th>
@@ -41,6 +42,7 @@
             <th scope="row">{{$post->id}}</th>
             <td>{{$post->title}}</td>
             <td>{{$post->slug}}</td>
+            <td>{{$post->category ? $post->category->label : '-'}}</td>
             <td>{{$post->is_published ? 'Pubblicato' : 'Bozza'}}</td>
             <td>{{$post->created_at}}</td>
             <td>{{$post->updated_at}}</td>
@@ -65,7 +67,7 @@
         </tr>
         @empty
         <tr>
-            <td colspan="6">
+            <td colspan="8">
                 <h2 class="text-center">Non ci sono post da visualizzare</h2>
             </td>
         </tr>

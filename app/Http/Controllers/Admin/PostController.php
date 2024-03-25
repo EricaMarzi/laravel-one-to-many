@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -32,7 +33,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin\posts\create');
+        $categories = Category::all();
+        return view('admin\posts\create', compact('categories'));
     }
 
     /**

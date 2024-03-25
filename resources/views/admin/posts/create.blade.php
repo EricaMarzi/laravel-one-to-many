@@ -22,7 +22,18 @@
                 <textarea class="form-control" id="content" rows="10" name="content" required>{{old('content', '')}}</textarea>
             </div>
         </div>
-        <div class="col-11">
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="category_id" class="form-label">Categoria</label>
+                <select name="category_id" id="category_id" class="form-select">
+                    <option value="">Nessuna</option>
+                    @foreach($categories as $category)
+                    <option value="1">{{$category->label}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="col-5">
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine post</label>
                 <input type="file" class="form-control" id="image" placeholder="http:// o https://" name="image">
